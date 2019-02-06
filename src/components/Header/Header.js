@@ -11,7 +11,8 @@ const Header = props => {
                 </ul>
             </nav>
             <h1>The Beer Bank</h1>
-            <span>Find your favorite beer here</span>
+            <span className="slogan">Find your favorite beer here</span>
+            <input type="text" name="search_beer" placeholder="Search for beer name" />
         </header>
     );
 }

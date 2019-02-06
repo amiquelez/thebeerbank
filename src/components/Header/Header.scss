@@ -2,8 +2,6 @@ header{
     height: 200px;
     background: #ea9836;
     color: #ffffff;
-    display: flex;
-    justify-content: center;
     nav ul{
         display: flex;
         justify-content: flex-end;
@@ -13,6 +11,27 @@ header{
             list-style: none;
             text-transform: uppercase;
             margin-left: 15px;
+            font-size: 0.75em;
         }
+    }
+    h1{
+        text-align: center;
+        margin: 20px 0 4px 0;
+        font-size: 1.75em;
+    }
+    .slogan{
+        text-align: center;
+        display: block;
+        font-size: 0.8em;
+    }
+    input{
+        width: 23%;
+        min-width: 300px;
+        display: block;
+        margin: auto;
+        border: none;
+        margin-top: 12px;
+        height: 23px;
+        padding: 0 5px;
     }
 }
