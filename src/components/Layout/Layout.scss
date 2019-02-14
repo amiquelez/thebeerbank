@@ -1,0 +1,11 @@
+.content{
+    background: #ECECEC;
+}
+.items_list{
+    width: 70%;
+    margin: auto;
+    padding: 80px 0 20px 0;
+    display: flex;
+    justify-content: space-between;
+    flex-flow: wrap;
+}

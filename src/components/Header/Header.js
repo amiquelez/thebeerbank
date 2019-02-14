@@ -6,7 +6,7 @@ const Header = props => {
         <header>
             <nav>
                 <ul>
-                    <li>Home</li>
+                    <li><a href="#">Home</a></li>
                     <li>Favourite</li>
                 </ul>
             </nav>

@@ -1,0 +1,46 @@
+.item_box{
+    width: 300px;
+    height: 330px;
+    background: #ffffff;
+    border-radius: 3px;
+    box-shadow: 3px 3px #DCDCDC;
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+    .favourite{
+        cursor: pointer;
+        position: absolute;
+        top: 6px;
+        right: 12px;
+        .selected{
+            display: none;
+        }
+    }
+    .favourite:hover{
+        i{
+            display: none;
+        }
+        i.selected{
+            color: #ea9736;
+            display: inline;
+        }
+    }
+    .content_image{
+        text-align: center;
+        margin: 18px 0;
+        img{
+            max-height: 180px;
+        }
+    }
+    h3, p{
+        width: 70%;
+        margin: auto;
+    }
+    h3{
+        color: #ea9736;
+    }
+    p{
+        color: #c5c5c4;
+        font-size: 0.75em;
+    }
+}
