@@ -14,7 +14,9 @@ class Layout extends Component{
         scrolling: false,
         items: [],
         favourites: [],
-        favouritePage: false
+        favouritePage: false,
+        showModal: false,
+        product: null
     }
 
     componentDidMount(){
@@ -77,14 +79,20 @@ class Layout extends Component{
         })
     }
 
+    showProductHandler = (id) => {
+        const prod = this.state.items.filter(e => e.id === id)
+        console.log(prod)
+        this.setState({ showModal: true, product: prod })
+    }
+
     render(){
         return (
             <React.Fragment>
-                <Modal show={false}><ItemView /></Modal>
+                <Modal show={this.state.showModal}><ItemView product={this.state.product} items={this.state.items} /></Modal>
                 <Header favouriteClicked={this.favouriteHandler} homeClicked={this.homeHandler} />
                 <div className="content">
                     <div className="items_list">
-                        <Items items={this.state.items} clickedFavourite={this.addRemoveToFavouriteHandler} favourites={this.state.favourites} favouritePage={this.state.favouritePage} />
+                        <Items items={this.state.items} clickedFavourite={this.addRemoveToFavouriteHandler} clicked={this.showProductHandler} favourites={this.state.favourites} favouritePage={this.state.favouritePage} />
                     </div>
                 </div>
             </React.Fragment>

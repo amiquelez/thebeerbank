@@ -7,11 +7,11 @@ const Item = (props) => (
                 <i className={props.favourite ? "far fa-star" : "far fa-star selected"}></i>
                 <i className={props.favourite ? "fas fa-star selected" : "fas fa-star"}></i>
             </span>
-            <div className="content_image">
+            <div className="content_image" onClick={props.click}>
                 <img src={props.image} alt={props.name} />
             </div>
-            <h3>{props.name}</h3>
-            <p>{props.tagline}</p>
+            <h3 onClick={props.click}>{props.name}</h3>
+            <p onClick={props.click}>{props.tagline}</p>
         </div>
     );
 

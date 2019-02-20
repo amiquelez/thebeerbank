@@ -1,13 +1,13 @@
 import React from 'react';
 import './ItemView.scss';
 
-const itemView = () => (
+const itemView = (props) => (
     <div className="item_view">
         <div className="content_image">
             <img src="https://images.punkapi.com/v2/4.png" alt="Beer" />
         </div>
         <div className="summary">
-            <h3>Trashty Blondie</h3>
+            <h3></h3>
             <p className="slogan">You know you shouldnt</p>
             <hr />
             <ul className="details">
