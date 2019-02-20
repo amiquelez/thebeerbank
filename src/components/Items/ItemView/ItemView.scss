@@ -1,0 +1,45 @@
+.item_view{
+    display: flex;
+    .content_image{
+        width: 20%;
+        padding-top: 5%;
+        img{
+            max-width: 100%;
+        }
+    }
+    .summary{
+        width: 70%;
+        padding: 5%;
+        color: #7A7A7A;
+        h3{
+            color: #ea9736;
+        }
+        .slogan{
+            font-size: 0.75em;
+            color: #D0CECA;
+        }
+        hr{
+            display: inline-block;
+            border: 4px solid #b33e9a;
+            border-left: none;
+            border-right: none;
+            border-top: none;
+            width: 28px;
+        }
+        .details{
+            display: flex;
+            margin-bottom: 22px;
+            li{
+                list-style: none;
+                margin-right: 6px;
+                font-size: 0.85em;
+                span{
+                    font-weight: bold;
+                }
+            }
+        }
+        p{
+            font-size: 0.8em;
+        }
+    }
+}

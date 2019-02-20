@@ -2,7 +2,7 @@ import React from 'react';
 import './Modal.scss';
 
 const modal = (props) => (
-    <div className="modal">
+    <div className={props.show ? 'modal showModal' : 'modal hideModal'}>
         {props.children}
     </div>
 )

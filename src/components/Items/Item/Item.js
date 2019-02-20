@@ -3,7 +3,7 @@ import './Item.scss';
 
 const Item = (props) => (
         <div className="item_box">
-            <span className="favourite" onClick={props.click}>
+            <span className="favourite" onClick={props.clickFavourite}>
                 <i className={props.favourite ? "far fa-star" : "far fa-star selected"}></i>
                 <i className={props.favourite ? "fas fa-star selected" : "fas fa-star"}></i>
             </span>

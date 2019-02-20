@@ -8,5 +8,29 @@
     left: 31%;
     z-index: 999;
     background: #ffffff;
+    box-shadow: 1px 1px 1px 1px #000000;
+    padding: 16px;
+    box-sizing: border-box;
+    transition: all 0.3s ease-out;
+}
+.showModal{
+    transform: translateY(0);
+    opacity: 1;
+}
+.hideModal{
+    transform: translateY(-100vh);
+    opacity: 0;
+}
 
+@media (max-width: 1200px){
+    .modal{
+        width: 450px;
+        left: calc(50% - 225px);
+    }
+}
+@media (max-width: 600px){
+    .modal{
+        width: 90%;
+        left: 5%;
+    }
 }

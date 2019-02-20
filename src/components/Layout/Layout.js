@@ -4,6 +4,7 @@ import Items from '../Items/Items';
 import './Layout.scss';
 import axios from 'axios';
 import Modal from '../UI/Modal/Modal';
+import ItemView from '../Items/ItemView/ItemView';
 
 class Layout extends Component{
     state = {
@@ -50,9 +51,17 @@ class Layout extends Component{
 		}), this.loadItems)
     }
     
-    addToFavouriteHandler = (id, e) => {
+    addRemoveToFavouriteHandler = (id) => {
+        const exists = this.state.favourites.find(e => e === id);
+        let newFavourites;
+        if(!exists){
+            newFavourites = this.state.favourites.concat(id);
+        }else{
+            newFavourites = this.state.favourites.filter(e => e !== id)
+        }
+
         this.setState({
-            favourites: [...this.state.favourites, id]
+            favourites: newFavourites
         })
     }
 
@@ -71,11 +80,11 @@ class Layout extends Component{
     render(){
         return (
             <React.Fragment>
-                <Modal />
+                <Modal show={false}><ItemView /></Modal>
                 <Header favouriteClicked={this.favouriteHandler} homeClicked={this.homeHandler} />
                 <div className="content">
                     <div className="items_list">
-                        <Items items={this.state.items} clicked={this.addToFavouriteHandler} favourites={this.state.favourites} favouritePage={this.state.favouritePage} />
+                        <Items items={this.state.items} clickedFavourite={this.addRemoveToFavouriteHandler} favourites={this.state.favourites} favouritePage={this.state.favouritePage} />
                     </div>
                 </div>
             </React.Fragment>
