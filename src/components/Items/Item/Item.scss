@@ -12,16 +12,21 @@
         position: absolute;
         top: 6px;
         right: 12px;
-        .selected{
+        i{
             display: none;
+        }
+        i.fas{
+            color: #ea9736;
+        }
+        i.selected{
+            display: inline;
         }
     }
     .favourite:hover{
         i{
             display: none;
         }
-        i.selected{
-            color: #ea9736;
+        i.fas{
             display: inline;
         }
     }

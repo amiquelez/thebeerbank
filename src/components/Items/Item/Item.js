@@ -3,9 +3,9 @@ import './Item.scss';
 
 const Item = (props) => (
         <div className="item_box">
-            <span className="favourite">
-                <i className="far fa-star"></i>
-                <i className="fas fa-star selected"></i>
+            <span className="favourite" onClick={props.click}>
+                <i className={props.favourite ? "far fa-star" : "far fa-star selected"}></i>
+                <i className={props.favourite ? "fas fa-star selected" : "fas fa-star"}></i>
             </span>
             <div className="content_image">
                 <img src={props.image} alt={props.name} />

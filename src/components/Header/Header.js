@@ -6,8 +6,8 @@ const Header = props => {
         <header>
             <nav>
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li>Favourite</li>
+                    <li onClick={props.homeClicked}>Home</li>
+                    <li onClick={props.favouriteClicked}>Favourite</li>
                 </ul>
             </nav>
             <h1>The Beer Bank</h1>
