@@ -2,8 +2,6 @@
     width: 300px;
     height: 330px;
     background: #ffffff;
-    border-radius: 3px;
-    box-shadow: 3px 3px #DCDCDC;
     text-align: center;
     margin-bottom: 20px;
     position: relative;
@@ -21,14 +19,19 @@
         i.selected{
             display: inline;
         }
+        &:hover{
+            i{
+                display: none;
+            }
+            i.fas{
+                display: inline;
+            }
+        }
     }
-    .favourite:hover{
-        i{
-            display: none;
-        }
-        i.fas{
-            display: inline;
-        }
+    &:hover{
+        border-radius: 3px;
+        box-shadow: 3px 3px #DCDCDC;
+        transition: all 0.1s linear;
     }
     .content_image{
         text-align: center;
