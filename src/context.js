@@ -59,21 +59,15 @@ class ProductProvider extends Component {
             newFavourites = this.state.favourites.filter(e => e !== id)
         }
 
-        this.setState({
-            favourites: newFavourites
-        })
+        this.setState({favourites: newFavourites})
     }
 
     favouriteHandler = () => {
-        this.setState({
-            favouritePage: true
-        })
+        this.setState({favouritePage: true})
     }
 
     homeHandler = () => {
-        this.setState({
-            favouritePage: false
-        })
+        this.setState({favouritePage: false})
     }
 
     getItem = id => {
@@ -81,18 +75,24 @@ class ProductProvider extends Component {
         return product;
     }
 
-    handleDetail = id => {
+    detailHandler = id => {
         const product = this.getItem(id);
-        this.setState(() => {
-            return { product: product, showModal: true }; // why arrow function !!
-        });
+        this.setState({ product: product, showModal: true });
+    }
+
+    detailCloseHandler = () => {
+        this.setState({showModal: false});
     }
 
     render() {
         return (
             <ProductContext.Provider value={{
                 ...this.state,
-                handleDetail: this.handleDetail
+                detailHandler: this.detailHandler,
+                detailCloseHandler: this.detailCloseHandler,
+                addRemoveToFavouriteHandler: this.addRemoveToFavouriteHandler,
+                favouriteHandler: this.favouriteHandler,
+                homeHandler: this.homeHandler
                 }}>
                 {this.props.children}
             </ProductContext.Provider>
