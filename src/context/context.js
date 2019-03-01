@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-const ProductContext = React.createContext();
+export const ProductContext = React.createContext();
 
-class ProductProvider extends Component {
+export default class CentralStore extends Component {
     state = {
         perPage: 12,
         page: 1,
@@ -100,6 +100,4 @@ class ProductProvider extends Component {
     }
 }
 
-const ProductConsumer = ProductContext.Consumer;
-
-export {ProductProvider, ProductConsumer};
+//const ProductConsumer = ProductContext.Consumer;

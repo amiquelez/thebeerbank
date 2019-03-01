@@ -4,13 +4,13 @@ import Items from '../Items/Items';
 import './Layout.scss';
 import Modal from '../UI/Modal/Modal';
 import ItemView from '../Items/ItemView/ItemView';
-import {ProductConsumer} from '../../context';
+import {ProductContext} from '../../context/context';
 
 class Layout extends Component{
 
     render(){
         return (
-            <ProductConsumer>
+            <ProductContext.Consumer>
                 {val => (
                 <React.Fragment>
                     <Modal show={val.showModal}><ItemView product={val.product} items={val.items} /></Modal>
@@ -22,7 +22,7 @@ class Layout extends Component{
                     </div>
                 </React.Fragment>
                 )}
-            </ProductConsumer>
+            </ProductContext.Consumer>
         )
     };
 }

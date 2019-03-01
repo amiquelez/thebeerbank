@@ -1,9 +1,9 @@
 import React from 'react';
 import './ItemView.scss';
-import {ProductConsumer} from '../../../context';
+import {ProductContext} from '../../../context/context';
 
 const itemView = (props) => (
-    <ProductConsumer>
+    <ProductContext.Consumer>
         {context => {
             const {name, tagline, description, image_url, abv, ebc, ibu} = context.product;
             return (
@@ -25,7 +25,7 @@ const itemView = (props) => (
                 </div>
             )
         }}
-    </ProductConsumer>
+    </ProductContext.Consumer>
 )
 
 export default itemView;

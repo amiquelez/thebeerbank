@@ -1,11 +1,11 @@
 import React from 'react';
 import './Backdrop.scss';
-import {ProductConsumer} from '../../../context';
+import {ProductContext} from '../../../context/context';
 
 const backdrop = (props) => (
-    <ProductConsumer> 
+    <ProductContext.Consumer> 
     {context => props.show ? <div className="backdrop" onClick={context.detailCloseHandler}></div> : null }  
-    </ProductConsumer> 
+    </ProductContext.Consumer> 
 );
 
 export default backdrop;

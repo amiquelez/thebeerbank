@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './Nav.scss';
 import NavItem from './NavItem/NavItem';
-import {ProductConsumer} from '../../../context';
+import {ProductContext} from '../../../context/context';
 
 class Nav extends Component {
 
@@ -23,7 +23,7 @@ class Nav extends Component {
 
     render(){
         return (
-            <ProductConsumer> 
+            <ProductContext.Consumer>
                 {context => (
                 <nav className={this.state.scroll > this.state.top ? 'nav_fixed' : ''}> 
                     <ul>
@@ -32,7 +32,7 @@ class Nav extends Component {
                     </ul>
                 </nav>
                 )}
-            </ProductConsumer>
+            </ProductContext.Consumer>
         )
     }
 }
