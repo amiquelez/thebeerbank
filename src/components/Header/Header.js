@@ -1,6 +1,7 @@
 import React from 'react';
 import './Header.scss';
-import Nav from './Nav/Nav'
+import Nav from './Nav/Nav';
+import Search from './Search/search';
 
 const Header = props => {
     return (
@@ -8,7 +9,7 @@ const Header = props => {
             <Nav />
             <h1>The Beer Bank</h1>
             <span className="slogan">Find your favorite beer here</span>
-            <input type="text" name="search_beer" placeholder="Search for beer name" />
+            <Search />
         </header>
     );
 }

@@ -13,7 +13,8 @@ export default class CentralStore extends Component {
         favourites: [],
         favouritePage: false,
         showModal: false,
-        product: []
+        product: [],
+        search: ''
     }
 
     componentDidMount(){
@@ -35,8 +36,9 @@ export default class CentralStore extends Component {
     }
 
 	loadItems = () => {
-		const {perPage, page, items} = this.state
-		const url = `https://api.punkapi.com/v2/beers?page=${page}&per_page=${perPage}`;
+        const {perPage, page, items} = this.state
+        const searchTxt = this.state.search ? `&beer_name='${this.state.search}'` : '';  
+		const url = `https://api.punkapi.com/v2/beers?page=${page}&per_page=${perPage}${searchTxt}`;
         axios.get(url).then( response => this.setState({
             items: [...items, ...response.data],
             scrolling: false
@@ -84,6 +86,12 @@ export default class CentralStore extends Component {
         this.setState({showModal: false});
     }
 
+    searchHandler = (e) => {
+        const query = e.target.value.trim().replace(/ /g, '_');
+        this.setState({search: query});
+        this.loadItems();
+    }
+
     render() {
         return (
             <ProductContext.Provider value={{
@@ -92,12 +100,11 @@ export default class CentralStore extends Component {
                 detailCloseHandler: this.detailCloseHandler,
                 addRemoveToFavouriteHandler: this.addRemoveToFavouriteHandler,
                 favouriteHandler: this.favouriteHandler,
-                homeHandler: this.homeHandler
+                homeHandler: this.homeHandler,
+                searchHandler: this.searchHandler
                 }}>
                 {this.props.children}
             </ProductContext.Provider>
         );
     }
 }
-
-//const ProductConsumer = ProductContext.Consumer;
