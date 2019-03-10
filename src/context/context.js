@@ -14,7 +14,9 @@ export default class CentralStore extends Component {
         favouritePage: false,
         showModal: false,
         product: [],
-        search: ''
+        search: '',
+        baseUrl: 'https://api.punkapi.com/v2/beers?page=1&per_page=12',
+        url: 'https://api.punkapi.com/v2/beers?page=1&per_page=12'
     }
 
     componentDidMount(){
@@ -36,9 +38,7 @@ export default class CentralStore extends Component {
     }
 
 	loadItems = () => {
-        const {perPage, page, items} = this.state
-        const searchTxt = this.state.search ? `&beer_name='${this.state.search}'` : '';  
-		const url = `https://api.punkapi.com/v2/beers?page=${page}&per_page=${perPage}${searchTxt}`;
+        const {items, url} = this.state
         axios.get(url).then( response => this.setState({
             items: [...items, ...response.data],
             scrolling: false
@@ -86,10 +86,19 @@ export default class CentralStore extends Component {
         this.setState({showModal: false});
     }
 
-    searchHandler = (e) => {
+    searchHandler = e => {
+        const {baseUrl} = this.state;
         const query = e.target.value.trim().replace(/ /g, '_');
-        this.setState({search: query});
-        this.loadItems();
+        let newUrl = (query === '') ? `${baseUrl}` : `${baseUrl}&beer_name=${query}`;
+
+        this.setState(() => {
+            return {
+                items: [],
+                url: newUrl
+            }
+        }, () => {
+            this.loadItems()
+        });
     }
 
     render() {
