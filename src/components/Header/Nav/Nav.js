@@ -1,40 +1,35 @@
-import React, {Component} from 'react';
+import React, { useState, useEffect } from 'react';
 import './Nav.scss';
 import NavItem from './NavItem/NavItem';
 import {ProductContext} from '../../../context/context';
 
-class Nav extends Component {
+const Nav = () => {
+    
+    const [state, setState] = useState({
+        top: 10,
+        scroll: 0
+    })
 
-    constructor(){
-        super();
-        this.handleScroll = this.handleScroll.bind(this);
-    }    
-    state = {
-        top: 10
+    const handleScroll = () => {
+        setState({ ...state, scroll: window.scrollY });
     }
 
-    handleScroll() {
-        this.setState({scroll: window.scrollY});
-    }
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+    }, []);
 
-    componentDidMount(){
-        window.addEventListener('scroll', this.handleScroll);
-    }
-
-    render(){
-        return (
-            <ProductContext.Consumer>
-                {context => (
-                <nav className={this.state.scroll > this.state.top ? 'nav_fixed' : ''}> 
-                    <ul>
-                        <NavItem link={context.homeHandler}>Home</NavItem>
-                        <NavItem link={context.favouriteHandler}>Favourite</NavItem>
-                    </ul>
-                </nav>
-                )}
-            </ProductContext.Consumer>
-        )
-    }
+    return (
+        <ProductContext.Consumer>
+            {context => (
+            <nav className={state.scroll > state.top ? 'nav_fixed' : ''}> 
+                <ul>
+                    <NavItem link={context.homeHandler}>Home</NavItem>
+                    <NavItem link={context.favouriteHandler}>Favourite</NavItem>
+                </ul>
+            </nav>
+            )}
+        </ProductContext.Consumer>
+    )
 }
 
 export default Nav;
