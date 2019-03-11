@@ -15,11 +15,13 @@ export default class CentralStore extends Component {
         showModal: false,
         product: [],
         search: '',
-        baseUrl: 'https://api.punkapi.com/v2/beers?page=1&per_page=12',
-        url: 'https://api.punkapi.com/v2/beers?page=1&per_page=12'
+        baseUrl: 'https://api.punkapi.com/v2/beers',
+        url: 'https://api.punkapi.com/v2/beers'
     }
 
     componentDidMount(){
+        const {baseUrl, page, perPage} = this.state;
+        this.setState({url: `${baseUrl}?page=${page}&per_page=${perPage}`})
         this.loadItems()
         this.scrollListener = window.addEventListener('scroll', e => {
 			this.handleScroll(e)
@@ -49,7 +51,7 @@ export default class CentralStore extends Component {
 		this.setState(prevState => ({
 			page: prevState.page + 1,
 			scrolling: true
-		}), this.loadItems)
+		}), this.updateUrl)
     }
     
     addRemoveToFavouriteHandler = (id) => {
@@ -87,13 +89,20 @@ export default class CentralStore extends Component {
     }
 
     searchHandler = e => {
-        const {baseUrl} = this.state;
         const query = e.target.value.trim().replace(/ /g, '_');
-        let newUrl = (query === '') ? `${baseUrl}` : `${baseUrl}&beer_name=${query}`;
+        this.setState(() => { 
+            return { search: query, page: 1, items: [] } 
+        }, () => {
+            this.updateUrl();
+        });
+    }
 
+    updateUrl = () => {
+        const {baseUrl, page, perPage, search} = this.state;
+        const newUrlBase = `${baseUrl}?page=${page}&per_page=${perPage}`;
+        let newUrl = (search === '') ? newUrlBase : `${newUrlBase}&beer_name=${search}`;
         this.setState(() => {
             return {
-                items: [],
                 url: newUrl
             }
         }, () => {
